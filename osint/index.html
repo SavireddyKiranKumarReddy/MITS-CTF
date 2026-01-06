@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OSINT Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00ffcc;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .question {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>OSINT Challenge</h1>
+
+<p>
+You are given a single image. Using Open-Source Intelligence techniques,
+answer all the questions below.
+</p>
+
+<p>
+<strong>Download the image:</strong><br>
+<a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank">
+Download OSINT Image
+</a>
+</p>
+
+<hr>
+
+<div class="question">
+  <label>1. What is this user's avatar of?</label>
+  <input id="q1">
+</div>
+
+<div class="question">
+  <label>2. What city is this person in?</label>
+  <input id="q2">
+</div>
+
+<div class="question">
+  <label>3. What is the SSID of the WAP he connected to?</label>
+  <input id="q3">
+</div>
+
+<div class="question">
+  <label>4. What is his personal email address?</label>
+  <input id="q4">
+</div>
+
+<div class="question">
+  <label>5. What site did you find his email address on?</label>
+  <input id="q5">
+</div>
+
+<div class="question">
+  <label>6. Where has he gone on holiday?</label>
+  <input id="q6">
+</div>
+
+<div class="question">
+  <label>7. What is the person's password?</label>
+  <input id="q7">
+</div>
+
+<button onclick="submitAnswers()">Submit Answers</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function submitAnswers() {
+  const answers = {
+    q1: document.getElementById("q1").value,
+    q2: document.getElementById("q2").value,
+    q3: document.getElementById("q3").value,
+    q4: document.getElementById("q4").value,
+    q5: document.getElementById("q5").value,
+    q6: document.getElementById("q6").value,
+    q7: document.getElementById("q7").value
+  };
+
+  fetch("/api/verify-osint", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(answers)
+  })
+  .then(res => res.json())
+  .then(data => {
+    const result = document.getElementById("result");
+    if (data.success) {
+      result.style.color = "#00ff00";
+      result.textContent = "Correct! Final Flag: " + data.flag;
+    } else {
+      result.style.color = "#ff4444";
+      result.textContent = "Not all answers are correct. Solve all questions to reveal the flag.";
+    }
+  })
+  .catch(() => {
+    document.getElementById("result").textContent = "Server error.";
+  });
+}
+</script>
+
+</body>
+</html>
