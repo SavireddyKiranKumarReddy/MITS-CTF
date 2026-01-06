@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Web CTF – Challenge 4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    background:#0d0d0d;
+    color:#d0d0d0;
+    font-family:"Courier New", monospace;
+    padding:40px;
+    line-height:1.9;
+}
+
+.container {
+    max-width:900px;
+    margin:auto;
+}
+
+h1, h2 {
+    text-align:center;
+    color:#00ff99;
+}
+
+.panel {
+    background:#141414;
+    border:1px solid #2a2a2a;
+    border-radius:6px;
+    padding:32px;
+    margin-top:30px;
+}
+
+.story {
+    margin-bottom:22px;
+}
+
+.muted {
+    color:#888;
+}
+
+.flag {
+    color:#00ff00;
+    font-size:1.5em;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>WEB CTF – CHALLENGE 4</h1>
+    <h2>Index Is Not Everything</h2>
+
+    <div class="panel" id="content">
+        <p class="story">
+            You’ve already learned one lesson:
+            <br>
+            changing an index can change behaviour.
+        </p>
+
+        <p class="story">
+            But experienced attackers don’t stop at a single parameter.
+        </p>
+
+        <p class="story">
+            They observe.
+            <br>
+            They question.
+            <br>
+            They look for what the system quietly listens to.
+        </p>
+
+        <p class="story muted">
+            During testing, developers often leave behind switches.
+            <br>
+            Not numbers.
+            <br>
+            States.
+        </p>
+
+        <p class="story">
+            Most of them do nothing.
+            <br>
+            A few reveal too much.
+        </p>
+
+        <p class="story muted">
+            Logs mention something odd:
+            <br>
+            <em>“Handled internally before moving to the next challenge.”</em>
+        </p>
+    </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const index = params.get("index");
+const flagParam = params.get("flag");
+const content = document.getElementById("content");
+
+/* DISTRACTION: INDEX PARAMETER */
+if (index !== null) {
+    content.innerHTML += `
+        <p class="story">
+            Index parameter received.
+            <br>
+            Value processed.
+        </p>
+        <p class="story muted">
+            No sensitive behaviour mapped here.
+        </p>
+    `;
+}
+
+/* REAL LOGIC: FLAG PARAMETER */
+if (flagParam !== null) {
+
+    if (flagParam === "ch5") {
+        content.innerHTML = `
+            <h2>Hidden Switch Activated</h2>
+
+            <p class="story">
+                This parameter was never meant to be public.
+            </p>
+
+            <p class="story">
+                It exists only to move internally
+                <br>
+                from one challenge to the next.
+            </p>
+
+            <p class="flag">
+                CTF{hidden_flag_parameter_found}
+            </p>
+
+            <p class="story" style="text-align:center;">
+                You didn’t guess.
+                <br>
+                You observed.
+            </p>
+        `;
+    } else {
+        content.innerHTML += `
+            <p class="story">
+                Unknown flag parameter detected.
+            </p>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
