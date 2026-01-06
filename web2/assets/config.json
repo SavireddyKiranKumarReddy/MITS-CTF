@@ -1,0 +1,6 @@
+{
+  "app": "mits-web-ctf",
+  "version": "2.0",
+  "debug": false,
+  "flag": "CTF{network_tab_exposes_hidden_requests}"
+}

@@ -1,14 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>CTF – Challenge 2</title>
+  <meta charset="UTF-8">
+  <title>Web Challenge 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #0b0f14;
+      color: #e5e7eb;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 600px;
+      padding: 30px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+    }
+
+    h1 {
+      color: #00ffae;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    .hint {
+      margin-top: 15px;
+      color: #38bdf8;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Challenge 2</h1>
-<p>Everything looks normal.</p>
-<p>But does the browser load anything silently?</p>
+  <div class="box">
+    <h1>Web Challenge 2</h1>
+    <p>
+      Everything you see is intentional.  
+      Everything you don’t see is more important.
+    </p>
 
-<script src="index.js"></script>
+    <p class="hint">
+      Some things are not rendered — they are requested.
+    </p>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
