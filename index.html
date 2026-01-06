@@ -1,16 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MITS CTF</title>
+  <meta charset="UTF-8" />
+  <title>MITS Web CTF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ===== GLOBAL RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0f14;
+      color: #e6edf3;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 900px;
+      width: 90%;
+      padding: 40px;
+      background: #0f1621;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.08);
+      border: 1px solid #1f2937;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      color: #00ffae;
+    }
+
+    .header p {
+      margin-top: 10px;
+      color: #9ca3af;
+      font-size: 1rem;
+    }
+
+    /* ===== RULES ===== */
+    .rules {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 35px;
+    }
+
+    .rules h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .rules ul {
+      padding-left: 20px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* ===== CHALLENGES GRID ===== */
+    .challenges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .challenge-card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 18px rgba(0, 255, 170, 0.15);
+      border-color: #00ffae;
+    }
+
+    .challenge-card h3 {
+      color: #00ffae;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .challenge-card p {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .challenge-card a {
+      position: absolute;
+      inset: 0;
+      text-decoration: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .footer span {
+      color: #00ffae;
+    }
+  </style>
 </head>
 <body>
-  <h1>MITS Web CTF</h1>
-  <ul>
-    <li><a href="/web1/">Web Challenge 1</a></li>
-    <li><a href="/web2/">Web Challenge 2</a></li>
-    <li><a href="/web3/">Web Challenge 3</a></li>
-    <li><a href="/web4/">Web Challenge 4</a></li>
-    <li><a href="/web5/">Web Challenge 5</a></li>
-  </ul>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>MITS WEB CTF</h1>
+      <p>Test your web hacking fundamentals • Inspect • Analyze • Exploit</p>
+    </div>
+
+    <!-- RULES -->
+    <div class="rules">
+      <h2>Rules & Guidelines</h2>
+      <ul>
+        <li>All flags follow the format <strong>CTF{...}</strong></li>
+        <li>No brute-force or automated attacks</li>
+        <li>Use browser DevTools wisely</li>
+        <li>Think like an attacker, not a user</li>
+        <li>Learning is the real victory</li>
+      </ul>
+    </div>
+
+    <!-- CHALLENGES -->
+    <div class="challenges">
+
+      <div class="challenge-card">
+        <a href="./web1/"></a>
+        <h3>Web Challenge 1</h3>
+        <p>Nothing is hidden from those who know where to look.</p>
+      </div>
+
+      <div class="challenge-card">
+        <a href="./web2/"></a>
+        <h3>Web Challenge 2</h3>
+        <p>The browser sees more than the screen shows.</p>
+      </div>
+
+      <div class="challenge-card">
+        <a href="./web3/"></a>
+        <h3>Web Challenge 3</h3>
+        <p>Logic is a weapon. Use it carefully.</p>
+      </div>
+
+      <div class="challenge-card">
+        <a href="./web4/"></a>
+        <h3>Web Challenge 4</h3>
+        <p>Parameters define reality. Or do they?</p>
+      </div>
+
+      <div class="challenge-card">
+        <a href="./web5/"></a>
+        <h3>Web Challenge 5</h3>
+        <p>The final test separates curiosity from mastery.</p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Built for <span>MITS Cyber Security</span> • Learn • Break • Understand
+    </div>
+
+  </div>
+
 </body>
 </html>
